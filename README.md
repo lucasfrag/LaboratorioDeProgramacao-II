@@ -1,2 +1,3 @@
 # Laboratório de Programação II
-Repositório dedicado a disciplina de Laboratório de Programação II do curso de Análise e Desenvolvimento de Sistemas.
+## Trabalho I: Continente
+Sistema para criação de continentes, adição de países, exibir total de países de cada continente e países com maior e menor população.

@@ -1,10 +1,11 @@
 package app;
 
 public class Cliente {
-    private String cpf, nome, email;
+    private String nome, email;
+    private long cpf;
     private Conta conta;
 
-    public Cliente(String cpf, String nome, String email, Conta conta) {
+    public Cliente(long cpf, String nome, String email, Conta conta) {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
@@ -12,7 +13,7 @@ public class Cliente {
     }
 
     /* Getters */
-    public String getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
@@ -29,7 +30,7 @@ public class Cliente {
     }
     
     /* Setters */
-    public void setCpf(String cpf) {
+    public void setCpf(long cpf) {
         this.cpf = cpf;
     }
 

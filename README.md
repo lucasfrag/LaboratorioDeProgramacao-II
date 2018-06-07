@@ -7,8 +7,7 @@ Realizar a implementação de uma aplicação utilizando os conceitos de orienta
 ## Trabalho III: Sistema de Monetização (com Banco de Dados)
 Realizar a implementação de uma aplicação utilizando os conceitos de orientação a objetos em Java e acesso a banco de dados.
 
-<br><hr><br>
-
+<br><hr>
 ## APS1: Testes Unitários com JUnit
 Realizado tutorial do site: https://luizgustavoss.wordpress.com/2009/04/05/testes-unitarios-com-junit/
 ## APS2: Andamento do Projeto 

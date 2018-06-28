@@ -9,9 +9,9 @@ public class Conexao {
 	public static Connection getConnection() {
 		Connection conexao = null;
 		
-		String url = "jdbc:postgresql://localhost:5432/teste1";
+		String url = "jdbc:postgresql://localhost:5432/monetizacao";
 		String usuario  = "postgres";
-		String senha = "root";
+		String senha = "123456";
 		
 		try {
 			conexao = DriverManager.getConnection(url, usuario, senha);

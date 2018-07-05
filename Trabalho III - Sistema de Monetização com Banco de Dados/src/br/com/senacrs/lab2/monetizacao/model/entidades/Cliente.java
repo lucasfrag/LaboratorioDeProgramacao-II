@@ -1,4 +1,4 @@
-package br.com.senacrs.lab2.monetizacao.entidades;
+package br.com.senacrs.lab2.monetizacao.model.entidades;
 
 public class Cliente {
     private String nome, email;

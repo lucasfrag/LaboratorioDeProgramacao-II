@@ -1,19 +1,19 @@
-package br.com.senacrs.lab2.monetizacao.entidades;
+package br.com.senacrs.lab2.monetizacao.model.entidades;
 
 public class Produto {
-    private int codigo;
+    private int id;
     private String nome;
     private double preco;
 
-    public Produto(int codigo, String nome, double preco) {
-        this.codigo = codigo;
+    public Produto(int id, String nome, double preco) {
+        this.id = id;
         this.nome = nome;
         this.preco = preco;
     }
 
     /* Getters */
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
     public String getNome() {
@@ -25,8 +25,8 @@ public class Produto {
     }
     
     /* Setters */
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setNome(String nome) {

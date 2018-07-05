@@ -1,0 +1,57 @@
+SELECT * FROM funcionarios
+
+SELECT * FROM clientes
+
+SELECT * FROM produtos
+
+SELECT * FROM compras
+
+SELECT * FROM contas 
+
+SELECT * FROM operacoes
+
+
+
+CREATE TABLE funcionarios (
+	cpf bigint PRIMARY KEY,
+	nome varchar(200),
+	login varchar(200),
+	senha varchar(200)
+);
+
+CREATE TABLE clientes (
+	cpf bigint PRIMARY KEY,
+	nome varchar(200),
+	email varchar(200)
+
+);
+
+CREATE TABLE produtos (
+	id serial PRIMARY KEY,
+	nome varchar(200),
+	preco real
+);
+
+CREATE TABLE compras (
+	id serial PRIMARY KEY,
+	dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	produto int,
+	quantidade int,
+	total real,
+	cliente bigint
+);
+
+CREATE TABLE contas (
+	id int PRIMARY KEY,
+	dono bigint,
+	saldo real
+);
+
+CREATE TABLE operacoes (
+	id SERIAL PRIMARY KEY,
+	remetente bigint,
+	destinatario bigint,
+	valor real,
+	dataHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+

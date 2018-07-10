@@ -13,3 +13,5 @@ Repositório dedicado aos projetos desenvolvidos durante a disciplina de Laborat
 > Realizar a implementação de pelo menos um CRUD do Trabalho II.
 ### APS3: Modelando Banco de Dados
 > Crie todas as tabelas referentes às entidades da aplicação Consultório, visando o segundo projeto da disciplina.
+### APS4: Andamento do Projeto 
+> Realizar a implementação de pelo menos um CRUD do Trabalho III com persistência no Banco de Dados.

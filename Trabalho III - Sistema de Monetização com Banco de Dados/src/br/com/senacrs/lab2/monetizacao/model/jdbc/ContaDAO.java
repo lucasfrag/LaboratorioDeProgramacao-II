@@ -58,12 +58,13 @@ public class ContaDAO {
 	public static void atualizar(Conta conta) {
 		try {
 			Connection conexao = Conexao.getConnection();
-			String sql = "UPDATE contas SET saldo=? WHERE id=?";
+			String sql = "UPDATE contas SET saldo=?, dono=?  WHERE id=?";
 			
 			PreparedStatement prepara = conexao.prepareStatement(sql);
 			
 			prepara.setDouble(1, conta.getSaldo());
-			prepara.setInt(2, conta.getNumero());
+			prepara.setLong(2, conta.getDono());
+			prepara.setInt(3, conta.getNumero());
 			prepara.execute();
 			
 			prepara.close();

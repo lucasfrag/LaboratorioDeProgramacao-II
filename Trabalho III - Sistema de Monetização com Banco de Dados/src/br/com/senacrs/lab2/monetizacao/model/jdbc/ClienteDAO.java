@@ -4,11 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 
+import br.com.senacrs.lab2.monetizacao.controller.Menu;
 import br.com.senacrs.lab2.monetizacao.model.entidades.Cliente;
 
 public class ClienteDAO {
-	
+	static Scanner entrada = new Scanner(System.in);
 	public static void salvar (Cliente cliente) {
 		try {
 			Connection conexao = Conexao.getConnection();
@@ -32,7 +34,7 @@ public class ClienteDAO {
 		}
 	}
 	
-	public void deletar(Cliente cliente) {
+	public static void deletar(Cliente cliente) {
 		try {
 			Connection conexao = Conexao.getConnection();
 			String sql = "DELETE FROM clientes WHERE cpf=?";
@@ -106,11 +108,13 @@ public class ClienteDAO {
 			prepara.setLong(1, cpf);
 			
 			ResultSet resultado = prepara.executeQuery();
-		
-			while (resultado.next()) {		
+
+			if (resultado.next() != false) {
 				System.out.println("Nome: " + resultado.getString("nome"));
 				System.out.println("CPF: " + resultado.getLong("cpf"));
 				System.out.println("E-mail: " + resultado.getString("email"));
+			} else {
+				System.out.println("Não foram encontrado registros.");
 			}
 		
 			prepara.close();
@@ -119,6 +123,36 @@ public class ClienteDAO {
 		} catch(SQLException e) {
 			System.out.println("Erro ao localizar o cliente do banco.");
 		}
+	}
+	
+	public static Cliente getClientePorCpf(long cpf) {
+		Cliente cliente = new Cliente(0, null, null, null);
+		
+		try {
+			Connection conexao = Conexao.getConnection();
+			String sql = "SELECT * FROM clientes WHERE cpf = ?";
+
+			PreparedStatement prepara = conexao.prepareStatement(sql);
+			prepara.setLong(1, cpf); 
+			ResultSet resultado = prepara.executeQuery();
+			
+			if (resultado.next()) {
+				cliente.setCpf(resultado.getInt("cpf"));
+				cliente.setNome(resultado.getString("nome"));
+				cliente.setEmail(resultado.getString("email"));
+			} else {
+				System.out.println("Não foram encontrado registros. Operação abortada!");
+				Menu.iniciar(entrada);
+			}
+			
+			prepara.close();
+			conexao.close();
+			
+		} catch(SQLException e) {
+			System.out.println("Erro ao listar o cliente do banco.");
+		}
+		
+		return cliente;
 	}
 
 }

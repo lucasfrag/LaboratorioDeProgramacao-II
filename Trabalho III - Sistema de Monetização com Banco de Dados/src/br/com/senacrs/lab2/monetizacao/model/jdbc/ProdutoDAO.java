@@ -4,10 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 
+import br.com.senacrs.lab2.monetizacao.controller.Menu;
 import br.com.senacrs.lab2.monetizacao.model.entidades.Produto;
 
 public class ProdutoDAO {
+	static Scanner entrada = new Scanner(System.in);
 	
 	public static void salvar (Produto produto) {
 		try {
@@ -95,5 +98,35 @@ public class ProdutoDAO {
 		} catch(SQLException e) {
 			System.out.println("Erro ao listar os produtos do banco.");
 		}
+	}
+
+	public static Produto getProdutoPorId(int id) {
+		Produto produto = new Produto(0, null, 0);
+		
+		try {
+			Connection conexao = Conexao.getConnection();
+			String sql = "SELECT * FROM produtos WHERE id = ?";
+
+			PreparedStatement prepara = conexao.prepareStatement(sql);
+			prepara.setInt(1, id); 
+			ResultSet resultado = prepara.executeQuery();
+
+			if (resultado.next()) {
+				produto.setId(resultado.getInt("id"));
+				produto.setNome(resultado.getString("nome"));
+				produto.setPreco(resultado.getDouble("preco"));
+			} else {
+				System.out.println("Não foram encontrado registros. Operação abortada!");
+				Menu.iniciar(entrada);
+			}
+			
+			prepara.close();
+			conexao.close();
+			
+		} catch(SQLException e) {
+			System.out.println("Erro ao listar o produto do banco.");
+		}
+		
+		return produto;
 	}
 }

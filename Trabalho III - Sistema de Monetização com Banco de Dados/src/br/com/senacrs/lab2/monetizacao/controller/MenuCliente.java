@@ -18,12 +18,10 @@ public class MenuCliente {
 		System.out.println("4 - Relatório de compras feitas");
 		System.out.println("0 - Sair");
 		
-		int opcao = entrada.nextInt();
-		
-		if (ValidarDados.isInteger(opcao) && opcao > 4 && opcao < 0) {
-			System.out.println("Valor inválido.");
-			menuCliente(entrada);
-		}
+		String temp = entrada.next();
+
+		ValidarDados.verificaInteger(temp);
+		int opcao = Integer.parseInt(temp);
 		
 		switch (opcao) {
 			case 1: verSaldo(entrada);
@@ -38,7 +36,15 @@ public class MenuCliente {
 	
 	public static void verSaldo(Scanner entrada) {
 		System.out.println("Digite o número da conta: ");
-		int minhaConta = entrada.nextInt();
+		String temp = entrada.next();
+
+		ValidarDados.verificaInteger(temp);
+		int minhaConta = Integer.parseInt(temp);
+		
+		if (minhaConta <= 0) {
+			System.out.println("Valor inválido.");
+			menuCliente(entrada);
+		}
 		
 		System.out.println("Saldo da conta: R$" + ContaDAO.getContaPorConta(minhaConta).getSaldo());
 		menuCliente(entrada);
@@ -46,16 +52,41 @@ public class MenuCliente {
 	
 	public static void fazerTransferencia(Scanner entrada) {
 		System.out.println("Digite o número da sua conta: ");
-		int minhaConta = entrada.nextInt();
+		String temp = entrada.next();
+
+		ValidarDados.verificaInteger(temp);
+		int minhaConta = Integer.parseInt(temp);
+		
+		if (minhaConta <= 0) {
+			System.out.println("Valor inválido.");
+			menuCliente(entrada);
+		}
+		
 		Conta conta1 = ContaDAO.getContaPorConta(minhaConta);
 		
 		System.out.println("Digite o número da conta que irá receber o depósito: ");
-		int outraConta = entrada.nextInt();
+		temp = entrada.next();
+
+		ValidarDados.verificaInteger(temp);
+		int outraConta = Integer.parseInt(temp);
+		
+		if (outraConta <= 0) {
+			System.out.println("Valor inválido.");
+			menuCliente(entrada);
+		}
+		
 		Conta conta2 = ContaDAO.getContaPorConta(outraConta);
 		
 		System.out.println("Digite o valor da transfêrencia: ");
-		double valor = entrada.nextDouble();
+		temp = entrada.next();
+		ValidarDados.verificaDouble(temp);
 		
+		double valor = Double.parseDouble(temp);
+		
+		if (valor <= 0) {
+			System.out.println("Valor inválido!");
+			menuCliente(entrada);
+		}
 		
 		conta1.transferencia(conta2, valor);
 		
@@ -70,18 +101,24 @@ public class MenuCliente {
 	
 	public static void fazerDeposito(Scanner entrada) {
 		System.out.println("Digite o número da conta: ");
-		int numero = entrada.nextInt();
+		String temp = entrada.next();
+
+		ValidarDados.verificaInteger(temp);
+		int numero = Integer.parseInt(temp);
 		
-		if (ValidarDados.isInteger(numero) != true && numero <= 0) {
+		if (numero <= 0) {
 			System.out.println("Valor inválido!");
 			menuCliente(entrada);
 		}
 		
-		System.out.println("Digite o valor do depósito: ");
-		double valor = entrada.nextDouble();
 		
-		if (ValidarDados.isDouble(valor) != true && valor <= 0) {
-			System.out.println("Valor inválido!");
+		System.out.println("Digite o valor do depósito: ");
+		temp = entrada.next();
+		ValidarDados.verificaDouble(temp);
+		double valor = Double.parseDouble(temp);
+		
+		if (valor <= 0) {
+			System.out.println("Valor inválido.");
 			menuCliente(entrada);
 		}
 		
@@ -98,8 +135,14 @@ public class MenuCliente {
 	
 	public static void relatorioCompras(Scanner entrada) {
 		System.out.println("Digite o seu CPF: ");
-		long cliente = entrada.nextLong();
+		String temp = entrada.next();
 		
+		ValidarDados.verificaLong(temp);
+		long cliente = Long.parseLong(temp);
+		if (cliente <= 0) {
+			System.out.println("Valor inválido.");
+			menuCliente(entrada);
+		}
 		CompraDAO.getCompraPorCliente(cliente);
 		menuCliente(entrada);
 	}

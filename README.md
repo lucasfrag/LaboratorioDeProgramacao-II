@@ -6,6 +6,8 @@ Repositório dedicado aos projetos desenvolvidos durante a disciplina de Laborat
 > Realizar a implementação de uma aplicação utilizando os conceitos de orientação a objetos em Java.
 ### Trabalho III: Sistema de Monetização (com Banco de Dados)
 > Realizar a implementação de uma aplicação utilizando os conceitos de orientação a objetos em Java e acesso a banco de dados.
+### Trabalho IV: Sistema de Monetização (com Java FX)
+> Realizar a implementação de uma aplicação utilizando os conceitos de orientação a objetos em Java, acesso a banco de dados e interface utilizando Java FX.
 
 ### APS1: Testes Unitários com JUnit
 > Realizado tutorial do site: https://luizgustavoss.wordpress.com/2009/04/05/testes-unitarios-com-junit/

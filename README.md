@@ -1,5 +1,10 @@
-# Laboratório de Programação II
-Repositório dedicado aos projetos desenvolvidos durante a disciplina de Laboratório de Programação II.
+<p align="center">
+  <img src="https://logos-download.com/wp-content/uploads/2016/10/Java_logo_icon.png" height="150">
+  <h3 align="center">Laboratório de Programação II</h3>
+  <p align="center">Repositório dedicado aos projetos desenvolvidos durante a disciplina de Laboratório de Programação II.</p>
+ </p>
+
+
 ### Trabalho I: Continente
 > Sistema para criação de continentes, adição de países, exibir total de países de cada continente e países com maior e menor população.
 ### Trabalho II: Sistema de Monetização
